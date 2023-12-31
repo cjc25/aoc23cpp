@@ -4,7 +4,6 @@
 #include <vector>
 
 #include "absl/strings/match.h"
-#include "input.h"
 
 int to_digit(char c) {
   switch (c) {
@@ -103,9 +102,4 @@ void partb(const std::vector<std::string>& lines) {
   std::cout << running << '\n';
 }
 
-int main(int argc, char **argv) {
-  auto lines = aoc23cpp::FileLines("inputs/day1.txt");
-
-  parta(lines);
-  partb(lines);
-}
+std::filesystem::path filename = "inputs/day1.txt";

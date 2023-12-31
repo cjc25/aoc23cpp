@@ -5,11 +5,17 @@ cc_library(
     deps = ["@abseil-cpp//absl/strings"],
 )
 
+cc_library(
+    name = "runner",
+    srcs = ["runner.cc"],
+    deps = [":input"],
+)
+
 cc_binary(
     name = "day1",
     srcs = ["day1.cc"],
     deps = [
-        ":input",
+        ":runner",
         "@abseil-cpp//absl/strings",
     ],
 )
