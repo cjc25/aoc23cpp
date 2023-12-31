@@ -1,12 +1,10 @@
 #include <filesystem>
-#include <fstream>
 #include <iostream>
-#include <iterator>
 #include <string_view>
 #include <vector>
 
 #include "absl/strings/match.h"
-#include "absl/strings/str_split.h"
+#include "input.h"
 
 int to_digit(char c) {
   switch (c) {
@@ -27,8 +25,7 @@ int to_digit(char c) {
   }
 }
 
-void parta(std::string_view input) {
-  std::vector<std::string_view> lines = absl::StrSplit(input, "\n");
+void parta(const std::vector<std::string>& lines) {
   int running = 0;
   for (auto line : lines) {
     int first = 0;
@@ -81,10 +78,9 @@ int to_digit(std::string_view in) {
   return 0;
 }
 
-void partb(std::string_view input) {
-  std::vector<std::string_view> lines = absl::StrSplit(input, "\n");
+void partb(const std::vector<std::string>& lines) {
   int running = 0;
-  for (auto line : lines) {
+  for (std::string_view line : lines) {
     int first = 0;
     int last = 0;
     for (int i = 0; i < line.size(); ++i) {
@@ -108,11 +104,8 @@ void partb(std::string_view input) {
 }
 
 int main(int argc, char **argv) {
-  std::filesystem::path in = "inputs/day1.txt";
-  std::ifstream in_stream(in);
-  std::istreambuf_iterator begin(in_stream);
-  std::string input(begin, {});
+  auto lines = aoc23cpp::FileLines("inputs/day1.txt");
 
-  parta(input);
-  partb(input);
+  parta(lines);
+  partb(lines);
 }
