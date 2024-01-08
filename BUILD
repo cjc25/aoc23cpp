@@ -25,7 +25,15 @@ cc_binary(
     srcs = ["day2.cc"],
     deps = [
         ":runner",
-        "@abseil-cpp//absl/strings",
         "@abseil-cpp//absl/log:check",
+        "@abseil-cpp//absl/strings",
+    ],
+)
+
+cc_binary(
+    name = "day3",
+    srcs = ["day3.cc"],
+    deps = [
+        ":runner",
     ],
 )
